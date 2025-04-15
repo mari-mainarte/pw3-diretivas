@@ -1,0 +1,11 @@
+<button (click)="addTeste()">Adicionar</button>
+
+<!--Melhor utilizar o @if porque ele oculta do inspecionar-->
+@if(nomes.length == 0){
+  <!--Não esconde do inspecionar (não utilizar para dados sensíveis)
+    <p [hidden]="nomes.length > 0">Não tem nomes disponíveis</p>
+  -->
+  <p>Não tem nomes disponíveis</p>
+}@else {
+  <p>Agora tem nomes disponíveis</p>
+}
