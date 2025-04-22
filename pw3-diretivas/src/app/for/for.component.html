@@ -1,0 +1,31 @@
+<!--<p>{{professores[0]}}</p>-->
+
+<!--@for (item of professores; track $index) {
+  <li>
+    {{$index+1}} - {{item}}
+    <button (click)="remover($index)">Remover</button>
+  </li>
+}-->
+
+<h3>Lista de tarefas</h3>
+
+<button (click)="mostrarTarefas()">{{textoBotao}}</button>
+
+<button (click)="mostrarConcluidas()">{{textoBotao}}</button>
+
+@if(exibeTarefas ){
+  @for (item of tarefas; track item.id) {
+    @if(item.concluido){
+      <li>{{item.id}} - {{item.nome}} - Concluída</li>
+    }@else{
+      <li>{{item.id}} - {{item.nome}}</li>
+    }
+  }
+}@else{
+  @for (item of tarefas; track item.id) {
+    @if(item.concluido){
+      <li>{{item.id}} - {{item.nome}} - Concluída</li>
+    }
+  }
+}
+
