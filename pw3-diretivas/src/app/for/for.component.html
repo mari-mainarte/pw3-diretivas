@@ -9,22 +9,23 @@
 
 <h3>Lista de tarefas</h3>
 
-<button (click)="mostrarTarefas()">{{textoBotao}}</button>
+<button [hidden]="todasTarefas" (click)="mostrarTarefas()">Mostrar Tudo</button>
+<button [hidden]="!todasTarefas" (click)="mostrarConcluidas()">Mostrar Concluídas</button>
 
-<button (click)="mostrarConcluidas()">{{textoBotao}}</button>
-
-@if(exibeTarefas ){
-  @for (item of tarefas; track item.id) {
-    @if(item.concluido){
-      <li>{{item.id}} - {{item.nome}} - Concluída</li>
-    }@else{
-      <li>{{item.id}} - {{item.nome}}</li>
-    }
-  }
-}@else{
-  @for (item of tarefas; track item.id) {
-    @if(item.concluido){
-      <li>{{item.id}} - {{item.nome}} - Concluída</li>
+@if(exibeTarefas){
+  @if(todasTarefas){
+    @for (item of tarefas; track item.id) {
+      @if(item.concluido){
+        <li>{{item.id}} - {{item.nome}} - Concluída</li>
+      }@else{
+        <li>{{item.id}} - {{item.nome}}</li>
+      }
+    } 
+  }@else if(!todasTarefas){
+    @for (item of tarefas; track item.id) {
+      @if(item.concluido){
+        <li>{{item.id}} - {{item.nome}} - Concluída</li>
+      }
     }
   }
 }

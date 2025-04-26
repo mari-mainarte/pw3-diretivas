@@ -10,7 +10,7 @@ export class ForComponent {
 
   professores : string[] = ["Rogério", "Marion", "Luiz", "Edson", "Miriano"];
   tarefas : any[] = [
-    {"id": 1, "nome": "Atividade de PAM", "concluido": false},
+    {"id": 1, "nome": "Atividade de PAM", "concluido": true},
     {"id": 2, "nome": "Estudar inglês", "concluido": false},
     {"id": 3, "nome": "Exercícios de matemática", "concluido": true},
     {"id": 4, "nome": "Fazer Redação", "concluido": false},
@@ -18,8 +18,7 @@ export class ForComponent {
   ]
 
   exibeTarefas : boolean = false
-  textoBotao = "Mostrar Tudo"
-  n = false
+  todasTarefas : boolean = false
 
   remover(index : number){
     this.professores.splice(index, 1);
@@ -27,12 +26,11 @@ export class ForComponent {
 
   mostrarTarefas(){
     this.exibeTarefas = true
-    this.textoBotao = "Mostrar Concluídas"
-    return this.exibeTarefas
+    this.todasTarefas = true
   }
 
   mostrarConcluidas(){
-    
+    this.todasTarefas = false
   }
 
 }
