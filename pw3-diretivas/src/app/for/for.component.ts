@@ -17,20 +17,28 @@ export class ForComponent {
     {"id": 5, "nome": "Versão mobile no figma", "concluido": false}
   ]
 
-  exibeTarefas : boolean = false
-  todasTarefas : boolean = false
+  //exibeTarefas : boolean = false
+  //concluidas : boolean = true;
+  exibeTudo : boolean = true;
+  textoBotao : boolean = true;
 
   remover(index : number){
     this.professores.splice(index, 1);
   }
 
-  mostrarTarefas(){
-    this.exibeTarefas = true
-    this.todasTarefas = true
+  /**mostrarTarefas(){
+    this.exibeTarefas = true;
+    this.concluidas = !this.concluidas;
+  }**/
+
+  exibirTodas(){
+    this.exibeTudo = !this.exibeTudo;
   }
 
-  mostrarConcluidas(){
-    this.todasTarefas = false
+  getConcluidas(){
+    return this.tarefas.filter((item) => {
+        return item.concluido;
+    })
   }
 
 }

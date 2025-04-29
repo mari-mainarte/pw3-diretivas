@@ -9,24 +9,33 @@
 
 <h3>Lista de tarefas</h3>
 
-<button [hidden]="todasTarefas" (click)="mostrarTarefas()">Mostrar Tudo</button>
-<button [hidden]="!todasTarefas" (click)="mostrarConcluidas()">Mostrar Concluídas</button>
+<!-- <button [hidden]="todasTarefas" (click)="mostrarTarefas()">Mostrar Tudo</button>
+<button [hidden]="!todasTarefas" (click)="mostrarConcluidas()">Mostrar Concluídas</button>-->
 
-@if(exibeTarefas){
-  @if(todasTarefas){
+<!--@if(exibeTarefas){
+  @if(concluidas){
     @for (item of tarefas; track item.id) {
-      @if(item.concluido){
-        <li>{{item.id}} - {{item.nome}} - Concluída</li>
-      }@else{
-        <li>{{item.id}} - {{item.nome}}</li>
-      }
-    } 
-  }@else if(!todasTarefas){
+      <li>{{item.id}} - {{item.nome}}<span>{{item.concluido ? ' - Concluída' : ''}}</span></li>
+    }
+  }@else if(!concluidas){
     @for (item of tarefas; track item.id) {
       @if(item.concluido){
         <li>{{item.id}} - {{item.nome}} - Concluída</li>
       }
     }
   }
+}-->
+
+<!-- Correção -->
+
+<button (click)="exibirTodas()">{{exibeTudo? 'Mostrar Tudo':'Mostrar Concluídas'}}</button>
+
+@for(item of tarefas; track item.id){
+  @if(exibeTudo || item.concluido){
+    <li>{{item.id}} - {{item.nome}}<span>{{item.concluido ? ' - Concluída' : ''}}</span></li>
+  }
 }
 
+@if(!exibeTudo && getConcluidas().length == 0){
+  <li>Não há tarefas concluídas</li>
+}

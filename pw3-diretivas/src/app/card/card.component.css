@@ -1,0 +1,10 @@
+.example-card {
+  max-width: 220px;
+  background-color: yellow;
+  border-radius: 0%;
+  border-color: transparent;
+}
+
+.example-card-footer {
+  padding: 60px;
+}
